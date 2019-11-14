@@ -5,7 +5,6 @@ main()
 {
 char pilih;
 char yt;
-int il ;
 float lp,lpp,lr,ls,s1,l,p,r,a,t;
 
 mulai:
