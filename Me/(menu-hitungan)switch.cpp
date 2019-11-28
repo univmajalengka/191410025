@@ -72,3 +72,4 @@ float nilai1,nilai2,tbh,krng,bg,kl;
   cout<<"=======Terima Kasih========="<<endl;
   getch();
 }
+//compiler using Borland C++ 5.02
