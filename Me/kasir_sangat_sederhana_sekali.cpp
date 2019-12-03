@@ -1,3 +1,4 @@
+//using Compiler Borland C++ 5.02
 #include<iostream.h>
 #include<conio.h>
 
