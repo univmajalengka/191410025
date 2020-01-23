@@ -1,0 +1,71 @@
+//warnet_selisih_waktu using Borland c++ 5.02 compiler//
+#include<iostream.h>
+#include<conio.h>
+
+struct
+{
+ int jam;
+ int menit;
+ int detik;
+} masuk, keluar, selisih;
+float hasil, harga;
+char yt;
+main()
+{
+mulai:
+clrscr();
+cout<<"===================Program Warnet C++===================="<<endl;
+cout<<"========================================================="<<endl;
+cout<<"Jam Mulai ........."<<endl;
+cout<<"Jam     = ";cin >> masuk.jam;
+cout<<"Menit   = ";cin >> masuk.menit;
+cout<<"Detik   = ";cin >> masuk.detik;
+cout<<""<<endl;
+cout<<"Jam Selesai ......."<<endl;
+cout<<"Jam     = ";cin >> keluar.jam;
+cout<<"Menit   = ";cin >> keluar.menit;
+cout<<"Detik   = ";cin >> keluar.detik;
+if ((keluar.detik - masuk.detik) < 0)
+{
+ selisih.detik = (60 + keluar.detik)-masuk.detik;
+ keluar.menit;
+}
+else
+{
+ selisih.detik = keluar.detik - masuk.detik;
+}
+if ((keluar.menit - masuk.menit) < 0)
+{
+ selisih.menit = (60 + keluar.menit)-masuk.menit;
+ keluar.jam;
+}
+else
+{
+ selisih.menit = keluar.menit - masuk.menit;
+}
+cout<<""<<endl;
+cout<<"=========================================================="<<endl;
+cout<<"Durasi ...."<<endl;
+cout<<"Jam     = "<<selisih.jam<<endl;
+cout<<"Menit   = "<<selisih.menit<<endl;
+cout<<"Detik   = "<<selisih.detik<<endl;
+cout<<""<<endl;
+hasil=selisih.jam*3600 + selisih.menit*60 + selisih.detik;
+harga=hasil*0.5;
+cout<<"Lama Pemakaian   = "<<hasil<<" detik"<<endl;
+cout<<"Total Pembayaran = "<<harga<<" rupiah"<<endl;
+cout<<""<<endl;
+ulang:
+cout<<"Apakah Anda Ingin Ulang (Y/T) ? = ";cin>>yt;
+if(yt=='Y'||yt=='y')
+{goto mulai;}
+if(yt=='T'||yt=='t')
+{goto selesai;}
+else
+cout<<"Pilihan Hanya Y atau T"<<endl;
+{goto ulang;}
+selesai:
+cout<<""<<endl;
+cout<<"======================Terima Kasih======================="<<endl;
+getch();
+}
