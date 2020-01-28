@@ -16,6 +16,8 @@ Public Class Form1
         Chart1.ChartAreas(0).AxisY.Minimum = 0
         Chart1.ChartAreas("ChartArea1").AxisX.LabelStyle.Enabled = False
         CircularProgressBar1.Value = 0
+        Timer1.enabled = True
+        Timer1.interval = 100
     End Sub
 
     Private Sub VScrollBar1_Scroll(sender As Object, e As ScrollEventArgs) Handles VScrollBar1.Scroll
