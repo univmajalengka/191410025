@@ -1,0 +1,99 @@
+//Internet Of Thing Blynk App Android For sending Multiple Sensor & Controling Maintenance(DHT 11 & LDR)
+#define BLYNK_PRINT Serial
+#include <ESP8266WiFi.h>
+#include <BlynkSimpleEsp8266.h>
+#include <DHT.h>
+#define DHTPIN 0
+#define DHTTYPE DHT11
+DHT dht(DHTPIN,DHTTYPE);
+BlynkTimer timer, timert;
+char auth[] = "Auth Kamu";
+char ssid[] = "SSID";
+char pass[] = "PASSWORD";
+int sp = A0;
+int sv = 0;
+int kipas = D1;
+int lampu = D2;
+int lmplr = D6;
+int lmplr1 = D7;
+int lmpkmr = D5;
+
+void setup() {
+Serial.begin(9600);
+Blynk.begin(auth,ssid,pass);
+dht.begin();
+pinMode(lampu, OUTPUT);
+pinMode(kipas, OUTPUT);
+pinMode(lmplr, OUTPUT);
+pinMode(lmplr1, OUTPUT);
+pinMode(lmpkmr, OUTPUT);
+digitalWrite(lampu, HIGH);
+digitalWrite(kipas, HIGH);
+timer.setInterval(500L, sendSensor);
+}
+BLYNK_WRITE(V1)
+{
+  if(param.asInt()==1)
+  {
+    digitalWrite(kipas, LOW);
+  }
+  else if (param.asInt()==0)
+  {
+    digitalWrite(kipas, HIGH);
+  }
+}
+BLYNK_WRITE(V2)
+{
+  if(param.asInt()==1)
+  {
+    digitalWrite(lmpkmr, HIGH);
+  }
+  else if (param.asInt()==0)
+  {
+    digitalWrite(lmpkmr, LOW);
+  }
+}
+BLYNK_WRITE(V3)
+{
+  if(param.asInt()==1)
+  {
+    digitalWrite(lmplr, HIGH);
+    digitalWrite(lmplr1, HIGH);
+  }
+  else if (param.asInt()==0)
+  {
+    digitalWrite(lmplr, LOW);
+    digitalWrite(lmplr1, LOW);
+  }
+}
+BLYNK_WRITE(V4)
+{
+  if(param.asInt()==1)
+  {
+    digitalWrite(lampu, LOW);
+  }
+  else if (param.asInt()==0)
+  {
+    digitalWrite(lampu, HIGH);
+  }
+}
+
+void sendSensor() {
+sv=analogRead(sp);
+float voltage=sv*(5.0/1023.0);
+Serial.println(voltage);
+Blynk.virtualWrite(V5, voltage);
+Blynk.virtualWrite(V6, sv);
+int t = dht.readTemperature();
+int h = dht.readHumidity();
+int t1 = t + 3;
+Serial.println(t1);
+Serial.println(h);
+Blynk.virtualWrite(V7, t1);
+Blynk.virtualWrite(V8, h);
+}
+
+void loop() {
+Blynk.run();
+timer.run();
+}
