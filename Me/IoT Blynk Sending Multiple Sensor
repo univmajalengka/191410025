@@ -1,4 +1,4 @@
-//Internet Of Thing Blynk App Android For sending Multiple Sensor & Controling Maintenance(DHT 11 & LDR)
+//Internet Of Thing Blynk App Android For sending Multiple Sensor & Controling Maintenance(DHT 11 & LDR) NodeMCU V3
 #define BLYNK_PRINT Serial
 #include <ESP8266WiFi.h>
 #include <BlynkSimpleEsp8266.h>
