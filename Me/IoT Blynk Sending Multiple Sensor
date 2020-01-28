@@ -6,7 +6,7 @@
 #define DHTPIN 0
 #define DHTTYPE DHT11
 DHT dht(DHTPIN,DHTTYPE);
-BlynkTimer timer, timert;
+BlynkTimer timer;
 char auth[] = "Auth Kamu";
 char ssid[] = "SSID";
 char pass[] = "PASSWORD";
