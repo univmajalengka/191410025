@@ -1,0 +1,55 @@
+//Static_Graph_Using_Visual_Studio_2015
+Public Class Form1
+    Dim charLimit As Integer = 30
+    Dim a As Integer = 100
+    Dim b As Integer
+    Dim detik As Integer
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        For i = 0 To 30 Step 1
+            Chart1.Series("Graph").Points.AddY(0)
+            If Chart1.Series(0).Points.Count = charLimit Then
+                Chart1.Series(0).Points.RemoveAt(0)
+            End If
+        Next
+        Chart1.ChartAreas(0).AxisY.Maximum = 100
+        Chart1.ChartAreas(0).AxisY.Minimum = 0
+        Chart1.ChartAreas("ChartArea1").AxisX.LabelStyle.Enabled = False
+        CircularProgressBar1.Value = 0
+    End Sub
+
+    Private Sub VScrollBar1_Scroll(sender As Object, e As ScrollEventArgs) Handles VScrollBar1.Scroll
+        b = a - VScrollBar1.Value
+        Chart1.Series("Graph").Points.AddY(b)
+        If Chart1.Series(0).Points.Count = charLimit Then
+            Chart1.Series(0).Points.RemoveAt(0)
+        End If
+        CircularProgressBar1.Value = b
+        CircularProgressBar1.Text = b
+        If b = 20 Then
+            CircularProgressBar1.ProgressColor = Color.Green
+        ElseIf b = 40 Then
+            CircularProgressBar1.ProgressColor = Color.Yellow
+        ElseIf b = 60 Then
+            CircularProgressBar1.ProgressColor = Color.Orange
+        ElseIf b = 80 Then
+            CircularProgressBar1.ProgressColor = Color.Red
+        End If
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        detik += 1
+        If detik = 80 Then
+            detik = 0
+        End If
+        If detik = 20 Then
+            CircularProgressBar2.ProgressColor = Color.Green
+        ElseIf detik = 40 Then
+            CircularProgressBar2.ProgressColor = Color.Yellow
+        ElseIf detik = 60 Then
+            CircularProgressBar2.ProgressColor = Color.Teal
+        ElseIf detik = 78 Then
+            CircularProgressBar2.ProgressColor = Color.Blue
+        End If
+    End Sub
+End Class
