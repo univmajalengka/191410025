@@ -9,10 +9,10 @@
 #define DHTPIN 22
 #define DHTTYPE DHT11
 DHT dht(DHTPIN,DHTTYPE);
-BlynkTimer timer,timer1,waktu;
-char auth[] = "8HD_3DT7h4xcIRQadoTyBzdm7rjolUYT";
-char ssid[] = "IOT";
-char pass[] = "1315121177";
+BlynkTimer waktu;
+char auth[] = "Your Auth";
+char ssid[] = "SSID";
+char pass[] = "Password";
 int pinAout = 36;
 int sv = 0;
 int lpg_gas, co_gas, smoke_gas;
