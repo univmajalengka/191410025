@@ -1,0 +1,155 @@
+//karena aku udah punya Slider Value IoT Limit,, Jadi Aku Mencoba Untuk Sharing ini..
+#define BLYNK_PRINT Serial
+#include <WiFi.h>
+#include <WiFiClient.h>
+#include <BlynkSimpleEsp32.h>
+#include <DHT.h>
+#include <MQ2.h>
+#include <Wire.h>
+#define DHTPIN 22
+#define DHTTYPE DHT11
+DHT dht(DHTPIN,DHTTYPE);
+BlynkTimer timer,timer1,waktu;
+char auth[] = "8HD_3DT7h4xcIRQadoTyBzdm7rjolUYT";
+char ssid[] = "IOT";
+char pass[] = "1315121177";
+int pinAout = 36;
+int sv = 0;
+int lpg_gas, co_gas, smoke_gas;
+MQ2 mq2(pinAout);
+int kipas = 3;
+int lampu = 21;
+int lmplr = 5;
+int lmplr1 = 18;
+int lmpkmr = 19;
+int selectMode;
+void setup() {
+  // put your setup code here, to run once:
+Serial.begin(9600);
+Blynk.begin(auth,ssid,pass);
+dht.begin();
+mq2.begin();
+pinMode(lampu, OUTPUT);
+pinMode(kipas, OUTPUT);
+pinMode(lmplr, OUTPUT);
+pinMode(lmplr1, OUTPUT);
+pinMode(lmpkmr, OUTPUT);
+digitalWrite(lampu, HIGH);
+digitalWrite(kipas, HIGH);
+waktu.setInterval(500L, function);
+}
+void function()
+{
+  if (selectMode == 1)
+  {
+    lpg_gas = mq2.readLPG();
+    co_gas = mq2.readCO();
+    smoke_gas = mq2.readSmoke();
+    Blynk.virtualWrite(V5, lpg_gas);
+    Blynk.virtualWrite(V6, co_gas);
+    Blynk.virtualWrite(V9, smoke_gas);
+    int t = dht.readTemperature();
+    int h = dht.readHumidity();
+    sv=analogRead(39);
+    Serial.println(sv);
+    Blynk.virtualWrite(V12, sv);
+    Serial.println(t);
+    Serial.println(h);
+    Blynk.virtualWrite(V7, t);
+    Blynk.virtualWrite(V8, h);
+    if (smoke_gas <= 500)
+    {
+      digitalWrite(kipas, HIGH);
+      Blynk.virtualWrite(V10, "Udara Normal");
+    }
+    else if (smoke_gas >=501)
+    {
+      digitalWrite(kipas, LOW);
+      Blynk.virtualWrite(V10, "Udara Berasap");
+    }
+  }
+  else
+  {
+    lpg_gas = mq2.readLPG();
+    co_gas = mq2.readCO();
+    smoke_gas = mq2.readSmoke();
+    Blynk.virtualWrite(V5, lpg_gas);
+    Blynk.virtualWrite(V6, co_gas);
+    Blynk.virtualWrite(V9, smoke_gas);
+    int t = dht.readTemperature();
+    int h = dht.readHumidity();
+    sv=analogRead(39);
+    float voltage=sv*(5.0/1023.0);
+    Serial.println(sv);
+    Serial.println(smoke_gas);
+    Blynk.virtualWrite(V12, sv);
+    Serial.println(t);
+    Serial.println(h);
+    Blynk.virtualWrite(V7, t);
+    Blynk.virtualWrite(V8, h);
+    if (smoke_gas <= 500)
+    {
+      Blynk.virtualWrite(V10, "Udara Normal");
+    }
+    else if (smoke_gas >=501)
+    {
+      Blynk.virtualWrite(V10, "Udara Berasap");
+    }
+  }
+}
+BLYNK_WRITE(V13)
+{
+  selectMode = param.asInt();
+  function;
+}
+BLYNK_WRITE(V1)
+{
+  if(param.asInt()==1)
+  {
+    digitalWrite(kipas, LOW);
+  }
+  else if (param.asInt()==0)
+  {
+    digitalWrite(kipas, HIGH);
+  }
+}
+BLYNK_WRITE(V2)
+{
+  if(param.asInt()==1)
+  {
+    digitalWrite(lmpkmr, HIGH);
+  }
+  else if (param.asInt()==0)
+  {
+    digitalWrite(lmpkmr, LOW);
+  }
+}
+BLYNK_WRITE(V3)
+{
+  if(param.asInt()==1)
+  {
+    digitalWrite(lmplr, HIGH);
+    digitalWrite(lmplr1, HIGH);
+  }
+  else if (param.asInt()==0)
+  {
+    digitalWrite(lmplr, LOW);
+    digitalWrite(lmplr1, LOW);
+  }
+}
+BLYNK_WRITE(V4)
+{
+  if(param.asInt()==1)
+  {
+    digitalWrite(lampu, LOW);
+  }
+  else if (param.asInt()==0)
+  {
+    digitalWrite(lampu, HIGH);
+  }
+}
+void loop() {
+  // put your main code here, to run repeatedly:
+Blynk.run();
+waktu.run();
+}
