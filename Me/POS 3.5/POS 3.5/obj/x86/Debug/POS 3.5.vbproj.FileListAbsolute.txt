@@ -1,0 +1,17 @@
+D:\Bisri\V Basic 2010\POS 3.5\POS 3.5\bin\Debug\POS 3.5.exe
+D:\Bisri\V Basic 2010\POS 3.5\POS 3.5\bin\Debug\POS 3.5.pdb
+D:\Bisri\V Basic 2010\POS 3.5\POS 3.5\bin\Debug\POS 3.5.xml
+D:\Bisri\V Basic 2010\POS 3.5\POS 3.5\obj\x86\Debug\POS_3._5.Form1.resources
+D:\Bisri\V Basic 2010\POS 3.5\POS 3.5\obj\x86\Debug\POS_3._5.Form2.resources
+D:\Bisri\V Basic 2010\POS 3.5\POS 3.5\obj\x86\Debug\POS_3._5.Resources.resources
+D:\Bisri\V Basic 2010\POS 3.5\POS 3.5\obj\x86\Debug\POS 3.5.vbproj.GenerateResource.Cache
+D:\Bisri\V Basic 2010\POS 3.5\POS 3.5\obj\x86\Debug\POS 3.5.exe
+D:\Bisri\V Basic 2010\POS 3.5\POS 3.5\obj\x86\Debug\POS 3.5.xml
+D:\Bisri\V Basic 2010\POS 3.5\POS 3.5\obj\x86\Debug\POS 3.5.pdb
+D:\Bisri\V Basic 2010\POS 3.5\POS 3.5\bin\Debug\data.mdb
+D:\Bisri\V Basic 2010\POS 3.5\POS 3.5\bin\Debug\POS 3.5.exe.config
+D:\Bisri\V Basic 2010\POS 3.5\POS 3.5\obj\x86\Debug\POS_3._5.Form3.resources
+D:\Bisri\V Basic 2010\POS 3.5\POS 3.5\obj\x86\Debug\POS_3._5.Form4.resources
+D:\Bisri\V Basic 2010\POS 3.5\POS 3.5\obj\x86\Debug\POS_3._5.Form5.resources
+D:\Bisri\V Basic 2010\POS 3.5\POS 3.5\obj\x86\Debug\POS_3._5.Form6.resources
+D:\Bisri\V Basic 2010\POS 3.5\POS 3.5\obj\x86\Debug\POS_3._5.Form7.resources
