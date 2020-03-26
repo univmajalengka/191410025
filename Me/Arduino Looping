@@ -1,0 +1,49 @@
+//Perulangan 2 lampu dengan Nyala Yang Berbeda Temponya pada Arduino
+int a = 2;
+int b = 4;
+int c = 8;
+void setup()
+{
+  pinMode(a, OUTPUT);
+  pinMode(b, OUTPUT);
+  pinMode(c, OUTPUT);
+}
+
+void loop()
+{
+  digitalWrite(a, HIGH);
+  digitalWrite(c, HIGH);
+    for (int x=0; x < 1000; x++)
+    {
+      delay(1);
+      if (x==200) 
+        {
+          digitalWrite(b, HIGH);
+        }
+        else if (x==400) 
+        {
+          digitalWrite(b, LOW);
+        }
+        else if (x==600)
+        {
+          digitalWrite(b, HIGH);
+        }
+        else if (x==800)
+        {
+          digitalWrite(b, LOW);
+        }
+      else if (x==999)
+        {
+          digitalWrite(b, HIGH);
+        }
+    }
+  digitalWrite(a, LOW);
+  digitalWrite(c, LOW);
+  for (int x=0; x < 1000; x++) 
+    {
+      delay(1);
+      if (x==500) {
+      digitalWrite(b, LOW); 
+     }
+     }
+}
