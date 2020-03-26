@@ -1,0 +1,67 @@
+//Pascal Array(record)
+Program HitungPenggemarAcara;
+Uses WinCrt;
+Const
+JumlahAcara = 10;
+Type
+NamaAcara = String;
+DaftarAcara = Array [1..JumlahAcara] Of NamaAcara;
+DaftarPenggemar = Array [1..JumlahAcara] Of Integer;
+Var
+Jawab : Char;
+JumlahGemar : DaftarPenggemar;
+NoAcara : Integer;
+Acara : DaftarAcara;
+Alamat, Nama : String;
+Begin
+Repeat
+For NoAcara := 1 To JumlahAcara Do
+JumlahGemar [NoAcara] := 0;
+Acara [1] := 'Berita Daerah';
+Acara [2] := 'Berita Nasional';
+Acara [3] := 'Berita Dunia';
+Acara [4] := 'Film Detektif';
+Acara [5] := 'Film Kartun';
+Acara [6] := 'Film Keluarga';
+Acara [7] := 'Film Horor';
+Acara [8] := 'Acara Keluarga';
+Acara [9] := 'Ilmu Pengetahuan';
+Acara [10] := 'Olah Raga';
+ClrScr;
+GotoXY(1,7);
+Writeln('Daftar Acara TV' : 46);
+Writeln('===============' : 46);
+For NoAcara := 1 to 5 Do
+Begin
+GotoXY (20,9+NoAcara);
+Write(NoAcara:3,'. ',Acara [NoAcara]);
+GotoXY (40,9+NoAcara);
+Write (NoAcara+5:3,'. ',Acara [NoAcara+5]);
+end;
+GotoXY (15,16); Write('Masukan Nama : ');Readln(Nama);
+GotoXY (15,16); Write('Masukan Alamat : ');Readln(Alamat);
+GotoXY (15,16); Write('Nomor Pilihan (0:selesai) : ');
+Repeat
+GotoXY (45,16);ClrEol;
+Readln(NoAcara);
+If NoAcara in [1..10] Then
+JumlahGemar [NoAcara] := JumlahGemar [NoAcara]+1;
+Until NoAcara = 0;
+ClrScr; GotoXY(1,7);
+Writeln('Distribusi Penggemar' : 50);
+Writeln('====================' : 50);
+For NoAcara := 1 to 5 do
+Begin
+GotoXY (15,9+NoAcara);Write (Acara [NoAcara]);
+GotoXY (35,9+NoAcara);Write (JumlahGemar [NoAcara]);
+GotoXY (40,9+NoAcara);Write (Acara [NoAcara+5]);
+GotoXY (60,9+NoAcara);Write (JumlahGemar [NoAcara+5]);
+End;
+GotoXY(1,24);Write('Tekan enter..');Readln;
+writeln;
+Writeln('Nama anda   = ',Nama);
+Writeln('Alamat Anda = ',Alamat);
+Write('Ulang Kembali Program Y atau T = ');Readln(Jawab);
+until(Jawab in ['T','t']);
+writeln('Terima Kasih');
+End.
