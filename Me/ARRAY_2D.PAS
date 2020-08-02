@@ -18,7 +18,7 @@ clrscr;
 textcolor(12);
 writeln('================ Nama Buah Yang Tersedia ================');
 writeln('=========================================================');
-for NoBuah := 1 to 3 do
+for noBuah := 1 to 3 do
 writeln(noBuah:2,'. ',Buah[noBuah]);
 writeln;
 textcolor(11);
