@@ -75,11 +75,11 @@ public class Hitung_Luas {
 				System.out.println();
 				System.out.println("**** Conversi Fahrenheit Celsius ****");
 				System.out.println("*************************************");
-				System.out.print  ("Masukan Suhu Dalam Celsius    = ");
+				System.out.print  ("Masukan Suhu Dalam Fahrenheit   = ");
 				suhu = nilai.nextInt();
 				f = suhu - 32;
 				luas =  f * 5/9;
-				System.out.println("Suhu Dalam Fahrenheit         = " + (digit.format(luas)));
+				System.out.println("Suhu Dalam Celsius              = " + (digit.format(luas)));
 				break;
 
 				default :
