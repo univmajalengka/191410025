@@ -1,0 +1,14 @@
+D:\VISUAL STUDIO 2015\Hitung_Luas\Hitung_Luas\bin\Debug\Hitung_Luas.exe.config
+D:\VISUAL STUDIO 2015\Hitung_Luas\Hitung_Luas\bin\Debug\Hitung_Luas.exe
+D:\VISUAL STUDIO 2015\Hitung_Luas\Hitung_Luas\bin\Debug\Hitung_Luas.pdb
+D:\VISUAL STUDIO 2015\Hitung_Luas\Hitung_Luas\bin\Debug\Hitung_Luas.xml
+D:\VISUAL STUDIO 2015\Hitung_Luas\Hitung_Luas\obj\Debug\Hitung_Luas.vbprojResolveAssemblyReference.cache
+D:\VISUAL STUDIO 2015\Hitung_Luas\Hitung_Luas\obj\Debug\Hitung_Luas.Form1.resources
+D:\VISUAL STUDIO 2015\Hitung_Luas\Hitung_Luas\obj\Debug\Hitung_Luas.Resources.resources
+D:\VISUAL STUDIO 2015\Hitung_Luas\Hitung_Luas\obj\Debug\Hitung_Luas.vbproj.GenerateResource.Cache
+D:\VISUAL STUDIO 2015\Hitung_Luas\Hitung_Luas\obj\Debug\Hitung_Luas.exe
+D:\VISUAL STUDIO 2015\Hitung_Luas\Hitung_Luas\obj\Debug\Hitung_Luas.xml
+D:\VISUAL STUDIO 2015\Hitung_Luas\Hitung_Luas\obj\Debug\Hitung_Luas.pdb
+D:\VISUAL STUDIO 2015\Hitung_Luas\Hitung_Luas\bin\Debug\Guna.UI2.dll
+D:\VISUAL STUDIO 2015\Hitung_Luas\Hitung_Luas\bin\Debug\DevComponents.Instrumentation.dll
+D:\VISUAL STUDIO 2015\Hitung_Luas\Hitung_Luas\bin\Debug\DevComponents.Instrumentation.xml
