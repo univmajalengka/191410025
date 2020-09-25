@@ -1,0 +1,101 @@
+import java.util.*;
+import java.text.DecimalFormat;
+public class Hitung_Luas {
+	public static void main(String[] args) {
+		Scanner nilai = new Scanner(System.in);
+		Scanner huruf = new Scanner(System.in);
+		double panjang, lebar, jari_jari,sisi,luas,tinggi,suhu,f;
+		Integer pilih;
+		String jawab;
+		Boolean running = true;
+		DecimalFormat digit = new DecimalFormat("0.00");
+
+		while (running)
+		{
+			System.out.println();
+			System.out.println();
+			System.out.println("********* Hitung Luas & Volume & Conversi *********");
+			System.out.println("***************************************************");
+			System.out.println("1. Hitung Luas Persegi");
+			System.out.println("2. Hitung Luas Persegi Panjang");
+			System.out.println("3. Hitung Luas Lingkaran");
+			System.out.println("4. Hitung Volume Balok");
+			System.out.println("5. Conversi Fahrenheit Ke Celsius");
+			System.out.print  ("Tentukan Pilihan   = ");
+			pilih = nilai.nextInt();
+			switch (pilih)
+			{
+				case 1:
+				System.out.println();
+				System.out.println("********* Hitung Luas Persegi ***********");
+				System.out.println("*****************************************");
+				System.out.print  ("Masukan Sisi Persegi = ");
+				sisi = nilai.nextInt();
+				luas = Math.pow(sisi,2);
+				System.out.println("Luasnya Adalah       = " + luas);
+				break;
+
+				case 2:
+				System.out.println();
+				System.out.println("**** Hitung Luas Persegi Panjang ******");
+				System.out.println("***************************************");
+				System.out.print  ("Masukan Panjang      = ");
+				panjang = nilai.nextInt();
+				System.out.print  ("Masukan Lebar        = ");
+				lebar = nilai.nextInt();
+				luas = panjang * lebar;
+				System.out.println("Luasnya Adalah       = " + luas);
+				break;
+
+				case 3:
+				System.out.println();
+				System.out.println("******* Hitung Luas Lingkaran *******");
+				System.out.println("*************************************");
+				System.out.print  ("Masukan Jari-Jari    = ");
+				jari_jari = nilai.nextInt();
+				luas = 3.14 * Math.pow(jari_jari,2);
+				System.out.println("Luasnya Adalah       = " + luas);
+				break;
+
+				case 4 :
+				System.out.println();
+				System.out.println("******** Hitung Volume Balok *********");
+				System.out.println("**************************************");
+				System.out.print  ("Masukan Panjang      = ");
+				panjang = nilai.nextInt();
+				System.out.print  ("Masukan Lebar        = ");
+				lebar = nilai.nextInt();
+				System.out.print  ("Masukan Tinggi       = ");
+				tinggi = nilai.nextInt();
+				luas = panjang * lebar * tinggi;
+				System.out.println("Luasnya Adalah       = " + luas);
+				break;
+
+				case 5:
+				System.out.println();
+				System.out.println("**** Conversi Fahrenheit Celsius ****");
+				System.out.println("*************************************");
+				System.out.print  ("Masukan Suhu Dalam Celsius    = ");
+				suhu = nilai.nextInt();
+				f = suhu - 32;
+				luas =  f * 5/9;
+				System.out.println("Suhu Dalam Fahrenheit         = " + (digit.format(luas)));
+				break;
+
+				default :
+				System.out.println();
+				System.out.println("**** Maaf Tidak Ada Dalam Pilihan ****");
+				System.out.println("******** Pilihan Antara 1/5 **********");
+			}
+			System.out.println();
+			System.out.print("Ingin Ulang Lagi ( ya // tidak )    = ");
+			jawab = huruf.nextLine();
+			if (jawab.equalsIgnoreCase("tidak"))
+			{
+				running = false;
+			}
+		}
+		System.out.println();
+		System.out.println("=============== Terima Kasih ================");
+	}
+}
