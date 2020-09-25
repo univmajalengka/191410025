@@ -86,6 +86,7 @@ public class Hitung_Luas {
 				System.out.println();
 				System.out.println("**** Maaf Tidak Ada Dalam Pilihan ****");
 				System.out.println("******** Pilihan Antara 1/5 **********");
+				break;
 			}
 			System.out.println();
 			System.out.print("Ingin Ulang Lagi ( ya // tidak )    = ");
