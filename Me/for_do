@@ -1,0 +1,65 @@
+import java.util.*;
+public class for_do {
+	public static void main(String[] args) {
+	Scanner nilai = new Scanner(System.in);
+	Scanner huruf = new Scanner(System.in);
+	Integer gaji = 0;
+	Integer pilih, i, jumlah;
+	String nama;
+	String ijazah = "";
+	System.out.println();
+	System.out.println();
+	System.out.println("********* Program Gaji Tunjangan ***********");
+	System.out.println("********************************************");
+	System.out.println("1. Ijazah SMP (Gaji 1 Juta)");
+	System.out.println("2. Ijazah SMA (Gaji 3 Juta)");
+	System.out.println("3. Ijazah D3  (Gaji 4 Juta)");
+	System.out.println("4. Ijazah S1  (Gaji 5 Juta)");
+	System.out.print  ("Masukan Jumlah Karyawan = ");
+	jumlah = nilai.nextInt();
+	for (i = 1 ; i<=jumlah ; i+=1) 
+	{
+		System.out.println();
+		System.out.println("Data Karyawan Ke = " + i);
+		System.out.println("=======================");
+		System.out.print  ("Masukan Nama   = ");
+		nama = huruf.nextLine();
+		System.out.println("Pilihan Ijazah : ");
+		System.out.println("1. Ijazah SMP");
+		System.out.println("2. Ijazah SMA");
+		System.out.println("3. Ijazah D3");
+		System.out.println("4. Ijazah S1");
+		System.out.print  ("Tentukan Pilihan = ");
+		pilih = nilai.nextInt();
+		switch(pilih)
+		{
+			case 1:
+			gaji = 1;
+			ijazah = "SMP";
+			break;
+
+			case 2:
+			gaji = 3;
+			ijazah ="SMA";
+			break;
+
+			case 3:
+			gaji = 4;
+			ijazah = "D3";
+			break;
+
+			case 4:
+			gaji = 5;
+			ijazah = "S1";
+			break;
+
+			default:
+			gaji = 0;
+			ijazah = "Pilihan 1/4";
+			break;
+		}
+		System.out.println("Nama = " + nama +","+" Lulusan = " +ijazah +","+ " Gaji = " + gaji + " Juta Rupiah");
+	}
+	System.out.println("======== Terima Kasih ========");
+	}
+}
