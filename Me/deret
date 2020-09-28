@@ -1,0 +1,40 @@
+import java.util.*;
+public class deret {
+	public static void main(String[] args) {
+		Scanner nilai = new Scanner(System.in);
+		Scanner huruf = new Scanner(System.in);
+		Integer i,n;
+		System.out.println();
+		System.out.println();
+		System.out.println("=====================================================");
+		System.out.println("Orang Dahulu Bilang,, Ketika Susah Tidur itu,,");
+		System.out.println("Diusahakan Untuk Mencoba Menghitung");
+		System.out.println("Mulai dari 1 sampai dengan Berapapun Jumlahnya");
+		System.out.println("Sampai Akhirnya Kamu Tertidur Pula..");
+		System.out.println("(Tekan Enter)");
+		System.out.print  ("-----------------------------------------------------");
+		huruf.nextLine();
+		System.out.println();
+		System.out.println("=====================================================");
+		System.out.println("Disini,, Kamu Hanya Tinggal Menentukan Bilangan Akhir");
+		System.out.println("Yang mungkin Kamu Taksir,, Sampai Bilangan Ke Berapa");
+		System.out.println("Akhirnya Kamu Dapat Tertidur..");
+		System.out.println("(Tekan Enter)");
+		System.out.print  ("-----------------------------------------------------");
+		huruf.nextLine();
+		System.out.println();
+		System.out.println("=====================================================");
+		System.out.print  ("Masukan Bilangan Tersebut = ");
+		n = nilai.nextInt();
+		System.out.println("Bilangan Yang Dimasukan = " + n);
+		System.out.println("(Tekan Enter untuk Proses)");
+		System.out.print  ("-----------------------------------------------------");
+		huruf.nextLine();
+		for (i = 1 ; i<=n ; i+=1)
+		{
+			System.out.print (i+" ");
+		}
+		System.out.println();
+		System.out.println("================== Silahkan Tertidur ================");	
+	}
+}
