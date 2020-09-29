@@ -1,0 +1,41 @@
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.*;
+class Helper extends TimerTask
+{
+	public static Integer i; {
+		Scanner nilai = new Scanner(System.in);
+		System.out.println();
+		System.out.println();
+		System.out.println("======== Count Timer Java =======");
+		System.out.print  ("Masukan Nilai Timer = ");
+		i = nilai.nextInt();
+	}
+	public void run ()
+	{
+		System.out.println("Timer = " + --i);
+		if (i==0)
+		{	synchronized(waktu.obj)
+			{
+				waktu.obj.notify();
+			}
+		}
+	}
+}
+public class waktu {
+	protected static waktu obj;
+	public static void main(String[] args) throws InterruptedException {
+		obj = new waktu();
+		Timer timer = new Timer();
+		TimerTask task = new Helper();
+		Date date = new Date();
+		timer.scheduleAtFixedRate(task, date, 1000);
+		System.out.println("Timer Running");
+		synchronized(obj)
+		{
+			obj.wait();
+			timer.cancel();
+			System.out.println("== Selesai ==");
+		}	
+	}
+}
