@@ -1,0 +1,38 @@
+import java.util.*;
+public class array1 {
+	public static void main(String[] args) {
+		Integer i,data;
+		String jurusan;
+		Integer counter =0;
+		Integer count = 0;
+		Scanner nilai = new Scanner(System.in);
+		Scanner huruf = new Scanner(System.in);
+		System.out.println();
+		System.out.println();
+		System.out.println("====== Input Data Array Mahasiswa =======");
+		System.out.print  ("Masukan Input Jumlah Mahasiswa = ");
+		data = nilai.nextInt();
+		System.out.println();
+		String [] jumlah = new String[data];
+		for (i =0; i < jumlah.length; i+=1)
+		{
+			{
+				count++;
+			}
+			System.out.print  ("Input Nama Ke : " + count +" = ");
+			jumlah[i] = huruf.nextLine();
+			System.out.print  ("jurusan           = ");
+			jurusan = huruf.nextLine();
+			System.out.println();
+		}
+		System.out.println();
+		System.out.println("=========== Data Output Array ===========");
+		for (String mahasiswa : jumlah)
+		{
+			{
+				counter++;
+			}
+			System.out.println(counter+" . "+"Nama Mahasiswa = " + mahasiswa);
+		}
+	}
+}
