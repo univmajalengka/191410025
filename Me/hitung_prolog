@@ -1,0 +1,32 @@
+hitung_prolog:-nl,nl,
+    write('===== Program Hitung Prolog ====='),nl,
+    write('================================='),nl,
+    write('1. Hitung Luas Persegi Panjang'),nl,
+    write('2. Hitung Keliling Lingkaran'),nl,
+    write('3. Hitung Volume Balok'),nl,
+    write('4. Selesai'),nl,
+    write('Masukan Pilihan  = '),read(K),nl,
+    (   K=1,
+        write('===== Hitung Luas Persegi Panjang ===='),nl,
+        write('Masukan Panjang   = '),read(P),
+        write('Masukan Lebar     = '),read(L),
+        LP is P*L,
+        write('Luasnya Adalah    = '),write(LP),
+        hitung_prolog;
+        K=2,
+        write('====== Hitung Keliling Lingkaran ====='),nl,
+        write('Masukan Diameter Lingkaran  = '),read(D),
+        DL is 3.14*D,
+        write('Keliling Lingkaran Tersebut = '),write(DL),
+        hitung_prolog;
+        K=3,
+        write('===== Hitung Volume Balok ======='),nl,
+        write('Masukan Panjang  = '),read(A),
+        write('Masukan Lebar    = '),read(B),
+        write('Masukan Tinggi   = '),read(C),
+        V is A*B*C,
+        write('Volume Balok     = '),write(V),
+        hitung_prolog;
+        K=4,
+        write('=========== Selesai ==============')
+    ).
