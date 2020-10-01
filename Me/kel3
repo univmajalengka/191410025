@@ -1,0 +1,26 @@
+kel3:-nl,
+write('================ Prolog ================='),nl,
+write('Disini Ada Dua Buah Keluarga,, Yaitu'),nl,
+write('budi dan ayu.. Kalian ingin Tahu Nama'),nl,
+write('Ayah, Ibu, dan Adiknya??'),nl,
+write('Coba Tanya(ketik) dengan format :'),nl,
+write('ayah/ibu/adik(budi/ayu,"nama orang/panggilan").'),nl,
+write('Contoh : "ayah(budi,Bro)."'),nl.
+keluarga(jajang).
+keluarga(maman).
+kel(siti).
+kel(rara).
+adk(ira).
+adk(ani).
+main(budi,rara).
+main(budi,maman).
+main(budi,ani).
+ayah(budi, J):-keluarga(J),
+main(budi,J).
+ayah(ayu, J):-keluarga(J).
+ibu(budi, K):-kel(K),
+main(budi, K).
+ibu(ayu, K):-kel(K).
+adik(budi, L):-adk(L),
+main(budi, L).
+adik(ayu, L):-adk(L).
