@@ -1,0 +1,40 @@
+#include<LiquidCrystal.h>
+LiquidCrystal lcd (12,11,5,4,3,2);
+int pir = 7;
+int led = 8;
+int status=0;
+void setup()
+{
+  lcd.begin(16,2);
+  pinMode(pir, INPUT);
+  pinMode(led, OUTPUT);
+}
+void me()
+{
+ status=digitalRead(pir);
+  if (status==HIGH)
+  {
+   lcd.clear();
+   digitalWrite(led, LOW);
+   delay(1000);
+   digitalWrite(led, HIGH);
+   lcd.setCursor(2,0);
+   lcd.print("Ada Gerakan");
+   delay(1000);
+  }
+  else if (status==LOW)
+  {
+   lcd.clear();
+   digitalWrite(led, LOW);
+   delay(1000);
+   lcd.setCursor(3,0);
+   lcd.print("Tidak Ada");
+   lcd.setCursor(4,1);
+   lcd.print("Gerakan");
+   delay(1000);
+  } 
+}
+void loop()
+{
+  me();
+}
