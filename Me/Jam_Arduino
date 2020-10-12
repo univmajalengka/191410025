@@ -1,0 +1,64 @@
+#include<LiquidCrystal.h>
+LiquidCrystal lcd (12,11,5,4,3,2);
+int detik;
+int menit;
+int jam;
+int potensio = A0;
+int nilai;
+int hasil;
+void setup()
+{
+ lcd.begin(16,2);
+ pinMode(potensio, INPUT);
+ jam = 12;
+ menit = 46;
+ detik = 10;
+}
+
+void interval()
+{
+ nilai=analogRead(potensio);
+ hasil=map(nilai,0,1023,0,1023);
+}
+
+void waktu()
+{
+ detik +=1;
+ if (detik == 60)
+ {
+  menit+=1;
+  detik =0;
+ }
+ if (menit== 60)
+ {
+  jam+=1;
+  menit=0;
+ }
+ if (jam ==24)
+ {
+  detik = 0;
+  menit = 0;
+  jam = 0;
+ }
+ lcd.setCursor(0,0);
+ lcd.print("Jam Ardunio");
+ lcd.setCursor(0,1);
+ lcd.print("H= ");
+ lcd.setCursor(2,1);
+ lcd.print(jam);
+ lcd.setCursor(6,1);
+ lcd.print("M= ");
+ lcd.setCursor(8,1);
+ lcd.print(menit);
+ lcd.setCursor(12,1);
+ lcd.print("S= ");
+ lcd.setCursor(14,1);
+ lcd.print(detik);
+ delay(hasil);
+ lcd.clear();
+}
+void loop()
+{
+  interval();
+  waktu();
+}
