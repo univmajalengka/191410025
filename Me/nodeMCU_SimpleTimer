@@ -1,0 +1,44 @@
+//Using Board NodeMCUEsp8266
+#include <SimpleTimer.h>
+SimpleTimer waktu;
+int led = D2;
+int lad = D6;
+char data;
+void setup() {
+Serial.begin(9600);
+pinMode(led, OUTPUT);
+pinMode(lad, OUTPUT);
+waktu.setInterval(500L, project);
+}
+
+void me()
+{
+  while(Serial.available()>0)
+  {
+    data = Serial.read();
+  }
+}
+
+void project()
+{
+  if (data == 'A')
+  {
+    digitalWrite(led, HIGH);
+    digitalWrite(lad, LOW);
+    delay(250);
+    digitalWrite(lad, HIGH);
+    digitalWrite(led, LOW);
+    delay(250);
+  }
+  else if (data == 'B')
+  {
+    digitalWrite(led, LOW);
+    digitalWrite(lad, LOW);
+  }
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+me();
+waktu.run();
+}
