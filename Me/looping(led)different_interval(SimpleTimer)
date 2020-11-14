@@ -1,0 +1,66 @@
+//SimpleTimer Looping led Different interval//
+#include <SimpleTimer.h>
+SimpleTimer timer,timer1,timer2;
+int detik,detik1,detik2;
+int led = D2;
+int lad = D6;
+int lod = D8;
+void setup() {
+  // put your setup code here, to run once:
+Serial.begin(9600);
+pinMode(led, OUTPUT);
+pinMode(lad, OUTPUT);
+pinMode(lod, OUTPUT);
+timer.setInterval(250L,aplikasi);
+timer1.setInterval(1000L, aplikasi1);
+timer2.setInterval(500L, aplikasi2);
+detik,detik1,detik2 =0;
+}
+void aplikasi()
+{
+  detik+=1;
+  if (detik ==1)
+  {
+    digitalWrite(led, HIGH);
+  }
+  else if(detik ==2)
+  {
+    digitalWrite(led, LOW);
+    detik =0;
+  }
+}
+
+void aplikasi1()
+{
+  detik1+=1;
+  if (detik1 ==1)
+  {
+    digitalWrite(lad, HIGH);
+  }
+  else if(detik1 ==2)
+  {
+    digitalWrite(lad, LOW);
+    detik1 = 0;
+  }
+}
+
+void aplikasi2()
+{
+  detik2+=1;
+  if (detik2 ==1)
+  {
+    digitalWrite(lod, HIGH);
+  }
+  else if(detik2 ==2)
+  {
+    digitalWrite(lod, LOW);
+    detik2=0;
+  }
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+timer.run();
+timer1.run();
+timer2.run();
+}
