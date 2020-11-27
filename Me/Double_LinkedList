@@ -1,0 +1,128 @@
+//Uses Borland C++ Compiler//
+#include <iostream>
+#include <conio.h>
+#include <windows.h>
+
+struct dataMhs {
+    char npm[50];
+    char nama[50];
+    char alamat[50];
+    dataMhs *next, *prev;
+};
+dataMhs *awal=NULL,*akhir=NULL,*bantu,*baru,*hapus;
+
+void inputDatadepan(){
+	 cout<<"========Input Data Mahasiswa(Di Depan)======="<<endl;
+    baru = new dataMhs;
+    baru->next = NULL;
+    baru->prev = NULL;
+    cout << "NPM\t\t: ";
+    cin >> baru->npm;
+    cout << "Nama\t\t: ";
+    cin >> baru->nama;
+    cout << "Alamat          : ";
+    cin >> baru->alamat;
+    if (awal == NULL){
+        awal = akhir = baru;
+    }
+    else {
+        baru->next = awal;
+        awal->prev = baru;
+        awal = baru;
+    }
+    system ("cls");
+}
+
+void inputDatabelakang(){
+	 cout<<"=======Input Data Mahasiswa(Di Belakang)======"<<endl;
+    baru = new dataMhs;
+    baru->next = NULL;
+    baru->prev = NULL;
+    cout << "NPM\t\t: ";
+    cin >> baru->npm;
+    cout << "Nama\t\t: ";
+    cin >> baru->nama;
+    cout << "Alamat          : ";
+    cin >> baru->alamat;
+    if (awal == NULL){
+        awal = akhir = baru;
+    }
+    else {
+        akhir->next = baru;
+        baru->prev = akhir;
+        akhir = baru;
+    }
+    system ("cls");
+}
+
+void hapusDatadepan(){
+    if(awal->next == NULL){
+        awal=akhir=NULL;
+        cout << "========Data sudah kosong======="<<endl;
+        cout <<""<<endl;
+    }else{
+        cout<<"=====Salahsatu Data Didepan Telah Dihapus======="<<endl;
+        hapus = awal;
+        awal = awal->next;
+        awal->prev = NULL;
+        delete hapus;
+        cout<<""<<endl;
+    }
+}
+
+void outputData (){
+    bantu=awal;
+    while (bantu != NULL){
+        cout << "NPM\t\t: "<<bantu->npm<<endl;
+        cout << "Nama\t\t: "<<bantu->nama<<endl;
+        cout << "Alamat          : "<<bantu->alamat<<endl;
+        bantu = bantu->next;
+        cout<<""<<endl;
+    }
+}
+
+int main()
+{   clrscr();
+    int pilihan;
+    do {
+        cout << "**************DOUBLE LINKED LIST**************\n";
+        cout << "==============================================="<<endl;
+        cout << "## Untuk Spasi,, Gunakan Garis Bawah!"<<endl;
+        cout << "-----------------------------------------------"<<endl;
+        cout << "Pilih menu : \n";
+        cout << "1. Input data di depan\n";
+        cout << "2. Input data di belakang\n";
+        cout << "3. Hapus data di depan\n";
+        cout << "4. Output data\n";
+        cout << "5. Keluar >> EXIT\n";
+        cout << "Pilihan : ";
+        cin >> pilihan;
+        cout<<""<<endl;
+        switch (pilihan){
+        case 1 :
+            inputDatadepan();
+            break;
+        case 2 :
+            inputDatabelakang();
+            break;
+        case 3 :
+            hapusDatadepan();
+            break;
+        case 4 :
+            cout<<"====== OUTPUT DATA ========"<<endl;
+            if (baru == NULL){
+                    cout <<""<< endl;
+                    cout << "Data masih kosong!\n";
+                    cout <<""<< endl;
+            }
+            else {
+                outputData();
+            }
+            break;
+        default :
+            cout << "============EXIT=============";
+            break;
+        }
+    }while(pilihan <= 4);
+    getch();
+}
