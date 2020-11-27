@@ -12,7 +12,7 @@ struct dataMhs {
 dataMhs *awal=NULL,*akhir=NULL,*bantu,*baru,*hapus;
 
 void inputDatadepan(){
-	 cout<<"========Input Data Mahasiswa(Di Depan)======="<<endl;
+    cout<<"========Input Data Mahasiswa(Di Depan)======="<<endl;
     baru = new dataMhs;
     baru->next = NULL;
     baru->prev = NULL;
@@ -34,7 +34,7 @@ void inputDatadepan(){
 }
 
 void inputDatabelakang(){
-	 cout<<"=======Input Data Mahasiswa(Di Belakang)======"<<endl;
+    cout<<"=======Input Data Mahasiswa(Di Belakang)======"<<endl;
     baru = new dataMhs;
     baru->next = NULL;
     baru->prev = NULL;
