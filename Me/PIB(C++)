@@ -1,0 +1,92 @@
+#include <iostream.h>
+#include <conio.h>
+
+int a,i,b ;
+int pilih,hasil;
+int keping,gram,nilai;
+char mt;
+
+void bilangan()
+{
+ cout<<"================================"<<endl;
+ cout<<"Tentukan Nilai = ";cin>>i;
+ for (a=1; a<=i; a++)
+ {
+  if (a<i)
+  {
+   b= b+a;
+   cout<<a<<" + ";
+  }
+  else
+  {
+   b = b+a;
+   cout<<a<<" = "<<b<<endl;
+   hasil = b*a;
+   cout<<"Hasil Adalah --> "<<b<<" x "<<a<<" = "<<hasil<<endl;
+  }
+ }
+}
+
+void jGram()
+{
+ cout<<"==============================="<<endl;
+ cout<<"Masukan Jumlah Nilai  = ";cin>>nilai;
+ cout<<"Masukan Jumlah Keping = ";cin>>keping;
+ hasil = nilai - keping;
+ cout<<"Jumlah Gram Adalah    = "<<hasil<<" gram"<<endl;
+}
+
+void jKeping()
+{
+ cout<<"==============================="<<endl;
+ cout<<"Masukan Jumlah Nilai  = ";cin>>nilai;
+ cout<<"Masukan Jumlah Gram   = ";cin>>gram;
+ hasil = nilai - gram;
+ cout<<"Jumlah Keping Adalah  = "<<hasil<<" keping"<<endl;
+}
+
+void main()
+{
+mulai:
+clrscr();
+cout<<"====== Program Bilangan ========"<<endl;
+cout<<"================================"<<endl;
+cout<<"Pilihan :"<<endl;
+cout<<"1. Input Nilai"<<endl;
+cout<<"2. Menentukan Gram"<<endl;
+cout<<"3. Menentukan Keping"<<endl;
+cout<<"Pilihan Kamu : ";cin>>pilih;
+switch (pilih)
+{
+ case 1:
+ bilangan();
+ a=0;
+ b=0;
+ break;
+
+ case 2:
+ jGram();
+ break;
+
+ case 3:
+ jKeping();
+ break;
+
+ default :
+ cout<<""<<endl;
+ cout<<"Maaf! Tidak Ada Dalam Pilihan!"<<endl;
+}
+ ulang:
+ cout<<""<<endl;
+ cout<<"Apakah Anda Ingin Ulang (Y/T) ? = ";cin>>mt;
+ if(mt=='Y'||mt=='y')
+ {goto mulai;}
+ if(mt=='T'||mt=='t')
+ {goto selesai;}
+ else
+ {goto ulang;}
+ selesai:
+ cout<<""<<endl;
+ cout<<"==============TERIMA KASIH=============="<<endl;
+ getch();
+}
