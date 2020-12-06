@@ -24,6 +24,6 @@ Private Sub ButtonStart_Click(sender As Object, e As EventArgs) Handles ButtonSt
             g.Dispose()
             PictureBoxVid.Invalidate() 'PictureBoxVid adalah Nama UI dimana Gambar Tersebut Disimpan
         Catch ex As Exception
-            MsgBox("Failde!", MsgBoxStyle.Critical, "Attention!")
+            MsgBox("Failed!", MsgBoxStyle.Critical, "Attention!")
         End Try
     End Sub
