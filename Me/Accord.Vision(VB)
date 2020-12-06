@@ -1,0 +1,27 @@
+'Complete Coding Untuk Face Detector Type Image
+Imports Accord.Vision.Detection 'nuget library accord.vision
+Imports Accord.Vision.Detection.Cascades 'nuget library accord vision
+
+Private Sub ButtonStart_Click(sender As Object, e As EventArgs) Handles ButtonStart.Click 'Buat button Start Untuk Eksekusi Pada Gambar(Image)
+        Try
+            Dim detector As HaarObjectDetector
+            Dim cascade As New FaceHaarCascade
+            detector = New HaarObjectDetector(cascade, 30)
+            detector.SearchMode = ObjectDetectorSearchMode.Average
+            detector.ScalingFactor = 1.5
+            detector.ScalingMode = ObjectDetectorScalingMode.GreaterToSmaller
+            detector.UseParallelProcessing = True
+            detector.Suppression = 1.5 'Integer Ketelitian Pendeteksian wajah Rekomondasi (1-4)
+            Dim sw As Stopwatch = Stopwatch.StartNew
+            Dim faceObjects As Rectangle() = detector.ProcessFrame(PictureBoxVid.Image) 'PictureBoxVid.Image adalah Nama UI dimana Gambar Tersebut Disimpan
+            sw.Stop()
+            Dim g As Graphics = Graphics.FromImage(PictureBoxVid.Image) 'PictureBoxVid.Image adalah Nama UI dimana Gambar Tersebut Disimpan
+            For Each face In faceObjects
+                g.DrawRectangle(myPen, face)
+            Next
+            g.Dispose()
+            PictureBoxVid.Invalidate() 'PictureBoxVid adalah Nama UI dimana Gambar Tersebut Disimpan
+        Catch ex As Exception
+            MsgBox("Failde!", MsgBoxStyle.Critical, "Attention!")
+        End Try
+    End Sub
