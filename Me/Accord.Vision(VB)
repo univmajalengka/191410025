@@ -17,6 +17,8 @@ Private Sub ButtonStart_Click(sender As Object, e As EventArgs) Handles ButtonSt
             sw.Stop()
             Dim g As Graphics = Graphics.FromImage(PictureBoxVid.Image) 'PictureBoxVid.Image adalah Nama UI dimana Gambar Tersebut Disimpan
             For Each face In faceObjects
+                Dim myPen As Pen
+                myPen = New Pen(Drawing.Color.Yellow, 1)'Warna dan Integer Ukuran Solid Rectangle
                 g.DrawRectangle(myPen, face)
             Next
             g.Dispose()
