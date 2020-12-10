@@ -1,3 +1,4 @@
+//nodeMcu ESP8266
 #define BLYNK_PRINT Serial
 #include <ESP8266WiFi.h>
 #include <BlynkSimpleEsp8266.h>
@@ -5,6 +6,7 @@ int led1 = D1;
 int led2 = D4;
 int led3 = D5;
 int led4 = D7;
+//Karena Semua pin Di Board ini PWM
 char auth[] = "Auth Dari Blynk App";
 char ssid[] = "SSID";
 char pass[] = "Password";
