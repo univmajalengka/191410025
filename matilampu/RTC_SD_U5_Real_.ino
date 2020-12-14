@@ -9,9 +9,9 @@
 SimpleTimer timer;
 DS3231  rtc(SDA, SCL);//(SD A4)(SC A5)//
 File myFile;
-int led1 = 9;
-int led2 = 6;
-int led3 = 3;
+int led1 = 9;//edit5(pin PWM untuk analogWrite)
+int led2 = 6;//edit5(pin PWM untuk analogWrite)
+int led3 = 3;//edit5(pin PWM untuk analogWrite)
 String hari,tanggal,waktu;
 int detik;
 void setup() {
@@ -60,8 +60,8 @@ void real_time()
     }
     else if(detik ==2)
     {
-      digitalWrite(led1, LOW);
-      analogWrite(led2, 10);
+      digitalWrite(led1, LOW);//edit5(untuk LOW atau False Sengaja Tidak Dirubah Menjadi AnalogWrite
+      analogWrite(led2, 10);//edit5(Tadinya digitalWrite dirubah Menjadi analogWrite.. Integer 10 adalah Penyesuaian Cahaya pada Ledm "hijau"
       hari = rtc.getDOWStr();
       myFile.print(hari);
       tanggal = rtc.getDateStr();
@@ -77,9 +77,9 @@ void real_time()
   else
   {
     Serial.println("No_Device");
-    analogWrite(led3, 50);
-    digitalWrite(led1, LOW);
-    digitalWrite(led2, LOW);
+    analogWrite(led3, 50);//edit5(Tadinya digitalWrite dirubah Menjadi analogWrite.. Integer 10 adalah Penyesuaian Cahaya pada Ledm "merah"
+    digitalWrite(led1, LOW);//edit5(untuk LOW atau False Sengaja Tidak Dirubah Menjadi AnalogWrite
+    digitalWrite(led2, LOW);//edit5(untuk LOW atau False Sengaja Tidak Dirubah Menjadi AnalogWrite
   }
   delay(1000);
 }
