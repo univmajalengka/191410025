@@ -26,10 +26,6 @@ void smoker()
 {
    smoke =analogRead(pinMQ);
    lpg = smoke / 12;
-   Serial.print("S");
-   Serial.println(smoke);
-   Serial.print("L");
-   Serial.println(lpg);
    Blynk.virtualWrite(V1, smoke);
    Blynk.virtualWrite(V2, lpg);
    if (smoke >= 550)
@@ -44,7 +40,7 @@ void smoker()
     delay(500);
     Blynk.email("GMAIL_Kamu","Kadar Asap Tinggi!!","Kadar Asap Melebihi dari Batas Yang Ditentukan!!");
    }
-   else if (smoke <= 550)
+   else if (smoke < 550)
    {
     digitalWrite(led1, LOW);
     digitalWrite(led2, LOW);
