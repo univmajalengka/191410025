@@ -42,7 +42,7 @@ void smoker()
     analogWrite(led2, 50);
     digitalWrite(snd, LOW);
     delay(500);
-    Blynk.email("bimust71088@gmail.com","Kadar Asap Tinggi!!","Kadar Asap Melebihi dari Batas Yang Ditentukan!!");
+    Blynk.email("GMAIL_Kamu","Kadar Asap Tinggi!!","Kadar Asap Melebihi dari Batas Yang Ditentukan!!");
    }
    else if (smoke <= 550)
    {
