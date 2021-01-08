@@ -1,6 +1,5 @@
 const int trig = D7;
 const int echo = D8;
-//int ht = 16 ;
 long duration,mm,mm1;
 float gr;
 void setup() {
@@ -8,8 +7,6 @@ void setup() {
 pinMode(trig, OUTPUT);
 pinMode(echo, INPUT);
 Serial.begin(9600);
-//lcd.begin(16,2);
-//ht = 16;
 }
 
 void loop() {
