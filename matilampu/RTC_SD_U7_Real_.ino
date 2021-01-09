@@ -90,6 +90,22 @@ while(Serial.available()>0)
       Serial.println("Gagal!");
     }
   }
+  else if (data == 'B')
+  {
+    myFile=SD.open("LOGMODUL.txt");
+    if (myFile)
+    {
+      while(myFile.available())
+      {
+        Serial.write(myFile.read());
+      }
+      myFile.close();
+    }
+    else
+    {
+      Serial.println("Gagal!");
+    }
+  }
 }
 }
 
