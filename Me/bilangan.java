@@ -11,7 +11,7 @@ public static void main(String[] args) {
 	System.out.println("*********************************************");
 	System.out.println("Inptut Statis Konstant = 2,45,7,3,5,1,8,9 , Dengan SUM = 10 ");
 	System.out.println("Hasil = ");
-   	 printSumPairs(a,10);        
+   	printSumPairs(a,10);        
 }
 
 public static void printSumPairs(int []input, int k){
