@@ -1,0 +1,65 @@
+#include<LiquidCrystal.h>
+#include<Servo.h>
+Servo servo;
+LiquidCrystal lcd (12,11,5,4,3,2);
+int trig = 10;
+int echo = 7;
+int led = 8;
+long duration, cm;
+void setup()
+{
+  Serial.begin(9600);
+  lcd.begin(16,2);
+  pinMode(led, OUTPUT);
+  pinMode(trig, OUTPUT);
+  pinMode(echo, INPUT);
+  servo.attach(6);
+  servo.write(0);
+  lcd.clear();
+  lcd.setCursor(1,0);
+  lcd.print("Selamat Datang");
+  lcd.setCursor(0,1);
+  lcd.print("Servo Ultrasnic");
+  delay(2000);
+}
+
+void ultrasonic()
+{
+  digitalWrite(trig, LOW);
+  delay(10);
+  digitalWrite(trig,HIGH);
+  delay(15); 
+  digitalWrite(trig,LOW);
+  duration=pulseIn(echo, HIGH);
+  cm = duration*0.034/2;
+}
+
+void result()
+{
+  if (cm <=100)
+  {
+   digitalWrite(led, HIGH);
+   lcd.clear();
+   lcd.setCursor(0,0);
+   lcd.print("Result = ");
+   lcd.setCursor(0,1);
+   lcd.print("Pintu Terbuka!");
+   servo.write(100);
+  }
+  else if (cm>=101)
+  {
+   digitalWrite(led, LOW);
+   lcd.clear();
+   lcd.setCursor(0,0);
+   lcd.print("Result = ");
+   lcd.setCursor(0,1);
+   lcd.print("Pintu Tertutup!");
+   servo.write(0);
+  }
+}
+
+void loop()
+{
+ ultrasonic();
+ result();
+}
