@@ -1,0 +1,106 @@
+#include<LiquidCrystal.h>
+LiquidCrystal lcd (12,11,5,4,3,2);
+const int trig = 7;
+const int echo = 6;
+int pinLdr = A0;
+int ledLdr = 10;
+int ledUlt = 9;
+float light;
+long duration, cm;
+char data;
+void setup()
+{
+  Serial.begin(9600);
+  lcd.begin(16,2);
+  pinMode(pinLdr, INPUT);
+  pinMode(trig, OUTPUT);
+  pinMode(echo, INPUT);
+  pinMode(ledLdr, OUTPUT);
+  pinMode(ledUlt, OUTPUT);
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("MAJALENGKA");
+  lcd.setCursor(6,1);
+  lcd.print("UNIVERSITY");
+  delay(5000);
+}
+
+void serialControl()
+{
+  while(Serial.available()>0)
+  {
+   data = Serial.read(); 
+  }
+}
+
+void sensorControl()
+{
+ if (data == 'A')
+ {
+   digitalWrite(ledLdr,HIGH);
+   light = analogRead(pinLdr);
+   lcd.clear();
+   lcd.setCursor(0,0);
+   lcd.print("Photoresistor");
+   lcd.setCursor(0,1);
+   lcd.print("Value =");
+   lcd.setCursor(8,1);
+   lcd.print(light);
+   delay(400);
+   digitalWrite(ledLdr,LOW);
+   light = analogRead(pinLdr);
+   lcd.clear();
+   lcd.setCursor(0,0);
+   lcd.print("Photoresistor");
+   lcd.setCursor(0,1);
+   lcd.print("Value =");
+   lcd.setCursor(8,1);
+   lcd.print(light);
+   delay(400);
+ }
+ else if(data == 'B')
+ {
+   digitalWrite(ledUlt, HIGH);
+   digitalWrite(trig, LOW);
+   delay(200);
+   digitalWrite(trig,HIGH);
+   delay(200);
+   digitalWrite(trig,LOW);
+   duration=pulseIn(echo, HIGH);
+   cm = duration*0.034/2;
+   lcd.clear();
+   lcd.setCursor(0,0);
+   lcd.print("Ultrasonic");
+   lcd.setCursor(0,1);
+   lcd.print("Jarak =");
+   lcd.setCursor(8,1);
+   lcd.print(cm);
+   lcd.setCursor(14,1);
+   lcd.print("cm");
+   delay(200);
+   digitalWrite(ledUlt, LOW);
+   digitalWrite(trig, LOW);
+   delay(200);
+   digitalWrite(trig,HIGH);
+   delay(200);
+   digitalWrite(trig,LOW);
+   duration=pulseIn(echo, HIGH);
+   cm = duration*0.034/2;
+   lcd.clear();
+   lcd.setCursor(0,0);
+   lcd.print("Ultrasonic");
+   lcd.setCursor(0,1);
+   lcd.print("Jarak =");
+   lcd.setCursor(8,1);
+   lcd.print(cm);
+   lcd.setCursor(14,1);
+   lcd.print("cm");
+   delay(200);
+ }
+}
+
+void loop()
+{
+  serialControl();
+  sensorControl();
+}
