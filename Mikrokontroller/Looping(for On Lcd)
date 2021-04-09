@@ -64,8 +64,8 @@ void serialControl()
       lcd.print("Dan Input B");
       delay(3000); 
    }
-    else if(data == 'B')
-    {
+   else if(data == 'B')
+   {
       digitalWrite(led1, LOW);
       digitalWrite(led3, HIGH);
       digitalWrite(led2, LOW);
@@ -85,8 +85,8 @@ void serialControl()
       lcd.print("# SILAHKAN #");
       lcd.setCursor(2,1);
       lcd.print("# TERTIDUR #");
-    }
-  }
+   }
+ }
 }
 
 
