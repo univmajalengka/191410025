@@ -39,7 +39,7 @@ void serialControl()
   {
    data = Serial.read();
    if (data == 'A')
- 	{
+ 	 {
       digitalWrite(led1, LOW);
       digitalWrite(led2, HIGH);
       digitalWrite(led3, LOW);
