@@ -39,7 +39,7 @@ void serialControl()
   {
    data = Serial.read();
    if (data == 'A')
-  {
+   {
       digitalWrite(led1, LOW);
       digitalWrite(led2, HIGH);
       digitalWrite(led3, LOW);
@@ -63,7 +63,7 @@ void serialControl()
       lcd.setCursor(0,1);
       lcd.print("Dan Input B");
       delay(3000); 
-  }
+   }
     else if(data == 'B')
     {
       digitalWrite(led1, LOW);
