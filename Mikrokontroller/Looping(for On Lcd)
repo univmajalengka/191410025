@@ -1,0 +1,96 @@
+#include<LiquidCrystal.h>
+LiquidCrystal lcd (12,11,5,4,3,2);
+int i;
+int led1 = 6;
+int led2 = 7;
+int led3 = 8;
+char data;
+void setup()
+{
+  Serial.begin(9600);
+  lcd.begin(16,2);
+  pinMode(led1, OUTPUT);
+  pinMode(led2, OUTPUT);
+  pinMode(led3, OUTPUT);
+  digitalWrite(led1, HIGH);
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("MICROCONTROLLER");
+  lcd.setCursor(3,1);
+  lcd.print("ALGORITHM");
+  delay(2000);
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("MAJALENGKA");
+  lcd.setCursor(6,1);
+  lcd.print("UNIVERSITY");
+  delay(2000);
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("Buka Serial");
+  lcd.setCursor(0,1);
+  lcd.print("Input = A");
+  delay(2000);
+}
+
+void serialControl()
+{
+  while(Serial.available()>0)
+  {
+   data = Serial.read();
+   if (data == 'A')
+ 	{
+      digitalWrite(led1, LOW);
+      digitalWrite(led2, HIGH);
+      digitalWrite(led3, LOW);
+      lcd.clear();
+      lcd.setCursor(0,0);
+      lcd.print("Ada Sebuah Mitos");
+      lcd.setCursor(0,1);
+      lcd.print("Ketika Akn Tidur");
+      delay(3000);
+
+      lcd.clear();
+      lcd.setCursor(0,0);
+      lcd.print("Harus Menghitung");
+      lcd.setCursor(0,1);
+      lcd.print("Dari 1 s/d 100");
+      delay(3000);
+
+      lcd.clear();
+      lcd.setCursor(0,0);
+      lcd.print("Buka Serial");
+      lcd.setCursor(0,1);
+      lcd.print("Dan Input B");
+      delay(3000); 
+  	}
+    else if(data == 'B')
+    {
+      digitalWrite(led1, LOW);
+      digitalWrite(led3, HIGH);
+      digitalWrite(led2, LOW);
+      lcd.clear();
+      for (i=0; i<=100; i+=1)
+      {
+        lcd.setCursor(0,0);
+        lcd.print("Result : ");
+        lcd.setCursor(0,1);
+        lcd.print("Angka = ");
+        lcd.setCursor(8,1);
+        lcd.print(i);
+        delay(1); 
+      }
+      lcd.clear();
+      lcd.setCursor(2,0);
+      lcd.print("# SILAHKAN #");
+      lcd.setCursor(2,1);
+      lcd.print("# TERTIDUR #");
+    }
+  }
+}
+
+
+void loop()
+{
+  serialControl();
+}
