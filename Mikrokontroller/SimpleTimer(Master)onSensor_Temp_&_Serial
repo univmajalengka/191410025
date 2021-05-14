@@ -1,0 +1,53 @@
+//Disini Menggunakan Board NodeMCUEsp8266
+#include<SimpleTimer.h>//SimpleTimer Library Master Itu Warnanya Hitam
+SimpleTimer timer;//Ini Untuk Pendeklarasian Pertama
+int pinAnalog=A0;
+int led1 = D2;
+int led2 = D8;
+char data;
+int result;
+
+void setup() {
+  // put your setup code here, to run once:
+Serial.begin(9600);
+pinMode(pinAnalog, INPUT);
+pinMode(led1, OUTPUT);
+pinMode(led2, OUTPUT);
+timer.setInterval(500, sistem);//Pendeklarasian Interval Timing dalam Function
+}
+
+void sendSerial()
+{
+  while(Serial.available()>0)
+  {
+    data = Serial.read();
+  }
+}
+
+void sistem()//function dalam Timer(SimpleTimer)
+{
+  if (data=='A')
+  {
+    result=analogRead(pinAnalog)/3;
+    analogWrite(led1, 100);
+    digitalWrite(led2, LOW);
+    Serial.print("Suhu = ");
+    Serial.println(result);
+    delay(500);//Interval Sesuai Pendeklarasian Interval
+    analogWrite(led2, 100);
+    digitalWrite(led1, LOW);
+    Serial.print("Suhu = ");
+    Serial.println(result);
+    delay(500);
+  }
+  else
+  {
+    digitalWrite(led1, LOW);
+    digitalWrite(led2, LOW);
+  }
+}
+void loop() {
+  // put your main code here, to run repeatedly:
+sendSerial();//Pemanggilan Function di Looping Void
+timer.run();//Bukan Function Yang Dipanggil Dalam Sistem SimpleTimer
+}
