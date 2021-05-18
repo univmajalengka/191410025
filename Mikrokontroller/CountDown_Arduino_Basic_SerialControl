@@ -1,0 +1,68 @@
+//Study Kasus Disini Menggunakan Board NodeMcuEsp8266 
+#include <SimpleTimer.h>//Ini Ceritanya Akan Membuat CountDown Timer Control Serial
+SimpleTimer timer;
+char data;
+int result,part;
+int led1 = D2;
+int led2 = D8;
+
+void setup() {
+  // put your setup code here, to run once:
+Serial.begin(9600);
+pinMode(led1, OUTPUT);
+pinMode(led2, OUTPUT);
+timer.setInterval(1000L, automat);
+result =0;
+part = 0;
+}
+
+void sendSerial()
+{
+  while(Serial.available()>0)
+  {
+    data = Serial.read();
+    if (data == 'A')
+    {
+      result = 9;
+      part = 1;
+    }
+    else if (data == 'B')
+    {
+      result = 5;
+      part =1;
+    }
+    else
+    {
+      part = 0;
+      digitalWrite(led1, LOW);
+      digitalWrite(led2, LOW);
+    }
+  }
+}
+
+void automat()
+{
+  if (part ==1)
+  {
+    result-=1;
+    Serial.println(result);
+    if (result ==1)
+    {
+      digitalWrite(led1, HIGH);
+      digitalWrite(led2, HIGH);
+    }
+    else if (result == 0)
+    {
+      result +=1;
+    }
+  }
+  else if(part ==0)
+  {
+    
+  }
+}
+void loop() {
+  // put your main code here, to run repeatedly:
+sendSerial();
+timer.run();
+}
