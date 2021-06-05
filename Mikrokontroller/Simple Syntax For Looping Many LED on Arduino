@@ -1,0 +1,18 @@
+int i; //for initializing pin Dinamis
+
+void setup()
+{
+  pinMode(i, OUTPUT);//For Instalation Mode Pin
+}
+
+
+void loop()
+{
+  for(i=2; i<= 11; i+=1)//Starting Pin Is 2 And Ending Is 11
+  {
+    digitalWrite(i, HIGH);
+    delay(150);
+    digitalWrite(i, LOW);
+    delay(150);
+  }
+}
