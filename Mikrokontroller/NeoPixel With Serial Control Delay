@@ -1,0 +1,92 @@
+//Using Resistor 10Kohm
+//NeoPixel With Serial Control Delay
+#include<Adafruit_NeoPixel.h>
+#define PIN 6
+#define PIN1 5
+#define PIN2 9
+#define NUMPIXELS 12
+#define NUMPIXELS1 12
+int interval ;
+char data;
+int result;
+Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel pixels1 = Adafruit_NeoPixel(NUMPIXELS, PIN1, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel pixels2 = Adafruit_NeoPixel(NUMPIXELS, PIN2, NEO_GRB + NEO_KHZ800);
+
+void setup()
+{
+  Serial.begin(9600);
+  pixels.begin();
+  pixels1.begin();
+  pixels2.begin();
+  interval = 100;
+  result = 0;
+}
+
+void sendSerial()
+{
+  while(Serial.available()>0)
+  {
+    data = Serial.read();
+    if (data == 'A')
+    {
+      interval= 100; 
+    }
+    else if( data == 'B')
+    {
+      interval = 500;
+    }
+  }
+}
+void loop()
+{
+   sendSerial();
+   for(int i=0;i<NUMPIXELS;i++)
+   {
+     result+=60;
+     pixels.setPixelColor(i, pixels.Color(255, 0, result));
+     pixels.show();
+     pixels1.setPixelColor(i, pixels1.Color(0, 150, 100));
+     pixels1.show();
+     pixels2.setPixelColor(i, pixels2.Color(100, 0, 255));
+     pixels2.show();
+     delay(interval);
+     //result = 0;
+   }
+   sendSerial();
+   for(int i=NUMPIXELS;i>=0;i--)
+   {
+     result+=60;
+     pixels.setPixelColor(i, pixels.Color(0, 150, result));
+     pixels.show();
+     pixels1.setPixelColor(i, pixels1.Color(100, 50, 100));
+     pixels1.show();
+     pixels2.setPixelColor(i, pixels2.Color(80, 150, 100));
+     pixels2.show();
+     delay(interval);
+   }
+   sendSerial();
+   for(int i=0;i<NUMPIXELS1;i++)
+   {
+     result+=60;
+     pixels.setPixelColor(i, pixels.Color(255, 150, result));
+     pixels.show();
+     pixels1.setPixelColor(i, pixels1.Color(0, 150, 100));
+     pixels1.show();
+     pixels2.setPixelColor(i, pixels2.Color(200, 150, 100));
+     pixels2.show();
+     delay(interval);
+   }
+   sendSerial();
+   for(int i=NUMPIXELS1;i>=0;i--)
+   {
+     result+=60;
+     pixels.setPixelColor(i, pixels.Color(0, 150, result));
+     pixels.show();
+     pixels1.setPixelColor(i, pixels1.Color(255, 150, 0));
+     pixels1.show();
+     pixels2.setPixelColor(i, pixels2.Color(255, 0, 100));
+     pixels2.show();
+     delay(interval);
+   }
+}
