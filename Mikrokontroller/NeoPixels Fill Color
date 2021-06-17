@@ -1,0 +1,71 @@
+//Using Resistor 10Kohm
+//NeoPixel Fill With Serial Control Delay
+#include<Adafruit_NeoPixel.h>
+#define PIN 6
+#define PIN1 5
+#define PIN2 9
+#define NUMPIXELS 12
+int interval ;
+char data;
+int i;
+int color, color1, color2;
+Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel pixels1 = Adafruit_NeoPixel(NUMPIXELS, PIN1, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel pixels2 = Adafruit_NeoPixel(NUMPIXELS, PIN2, NEO_GRB + NEO_KHZ800);
+
+void setup()
+{
+  Serial.begin(9600);
+  pixels.begin();
+  pixels1.begin();
+  pixels2.begin();
+  interval = 100;
+}
+
+void sendSerial()
+{
+  while(Serial.available()>0)
+  {
+    data = Serial.read();
+    if (data == 'A')
+    {
+      interval= 100; 
+    }
+    else if( data == 'B')
+    {
+      interval = 50;
+    }
+  }
+}
+
+void loop()
+{
+   for(i=0; i<=12; i+=1)
+   { 
+     sendSerial();
+     color+=500;
+     color1+=300;
+     color2+=550;
+     pixels.fill(color,0,12);
+     pixels.show();
+     pixels1.fill(color1,0,12);
+     pixels1.show();
+     pixels2.fill(color2,0,12);
+     pixels2.show();
+     delay(interval);
+   }
+   for(i=12; i>=0; i-=1)
+   {
+     sendSerial();
+     color+=500;
+     color1+=300;
+     color2+=550;
+     pixels.fill(color,0,12);
+     pixels.show();
+     pixels1.fill(color1,0,12);
+     pixels1.show();
+     pixels2.fill(color2,0,12);
+     pixels2.show();
+     delay(interval);
+   }
+}
