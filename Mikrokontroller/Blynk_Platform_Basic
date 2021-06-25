@@ -1,13 +1,13 @@
 #define BLYNK_PRINT Serial
-#define BLYNK_TEMPLATE_ID ""
-#define BLYNK_DEVICE_NAME ""
+#define BLYNK_TEMPLATE_ID "Id From Template BlynkClouds"
+#define BLYNK_DEVICE_NAME "Deice Name On Template Clouds"
 #include <ESP8266WiFi.h>
 #include <BlynkSimpleEsp8266.h>
 #include <SimpleTimer.h>
 
 char auth[] = "Your Auth";
-char ssid[] = "";
-char pass[] = "";
+char ssid[] = "SSID";
+char pass[] = "Password";
 
 void setup()
 {
