@@ -3,7 +3,6 @@
 #define BLYNK_DEVICE_NAME "Deice Name On Template Clouds"
 #include <ESP8266WiFi.h>
 #include <BlynkSimpleEsp8266.h>
-#include <SimpleTimer.h>
 
 char auth[] = "Your Auth";
 char ssid[] = "SSID";
