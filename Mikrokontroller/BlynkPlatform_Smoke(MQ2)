@@ -1,0 +1,45 @@
+#define BLYNK_PRINT Serial
+#define BLYNK_TEMPLATE_ID "TMPLKHua1kPC"
+#define BLYNK_DEVICE_NAME "MyProj"
+
+#include <ESP8266WiFi.h>
+#include <BlynkSimpleEsp8266.h>
+#include <SimpleTimer.h>
+SimpleTimer timer;
+
+int pinSmoke(A0);
+int smoke,gas;
+
+// You should get Auth Token in the Blynk App.
+// Go to the Project Settings (nut icon).
+char auth[] = "Your Auth";
+
+// Your WiFi credentials.
+// Set password to "" for open networks.
+char ssid[] = "SSID";
+char pass[] = "Password";
+
+void setup()
+{
+  // Debug console
+  Serial.begin(9600);
+  pinMode(pinSmoke, INPUT);
+  Blynk.begin(auth, ssid, pass);
+  timer.setInterval(500L, sensorSmoke);
+  // You can also specify server:
+  //Blynk.begin(auth, ssid, pass, "blynk-cloud.com", 80);
+  //Blynk.begin(auth, ssid, pass, IPAddress(192,168,1,100), 8080);
+}
+
+void sensorSmoke()
+{
+  smoke = analogRead(pinSmoke);
+  gas = smoke / 5;
+  Blynk.virtualWrite(V0, smoke);
+  Blynk.virtualWrite(V1, gas);
+}
+void loop()
+{
+  Blynk.run();
+  timer.run();
+}
