@@ -1,0 +1,74 @@
+#include <LiquidCrystal.h>
+#include <Servo.h>
+Servo servo;
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+int led1 = 6;
+int led2 = 7;
+int i;
+char data;
+
+void setup()
+{
+  Serial.begin(9600);
+  lcd.begin(16, 2);
+  servo.attach(9);
+  servo.write(0);
+  lcd.clear();
+  lcd.setCursor(3,0);
+  lcd.print("Majalengka");
+  lcd.setCursor(3,1);
+  lcd.print("University");
+  i=0;
+}
+
+void sendSerial()
+{
+  while(Serial.available()>0)
+  {
+    data = Serial.read();
+    if(data == 'A')
+    {
+      lcd.clear();
+      lcd.setCursor(6,0);
+      lcd.print("DOOR");
+      lcd.setCursor(5,1);
+      lcd.print("OPENED");
+      for(i=0; i<=110; i+=1)
+      {
+        digitalWrite(led2, HIGH);
+        servo.write(i);
+        delay(30);
+        digitalWrite(led2, LOW);
+      }
+       lcd.clear();
+       lcd.setCursor(3,0);
+       lcd.print("Majalengka");
+       lcd.setCursor(3,1);
+       lcd.print("University");
+     }
+     else if(data == 'B')
+     {
+      lcd.clear();
+      lcd.setCursor(6,0);
+      lcd.print("DOOR");
+      lcd.setCursor(5,1);
+      lcd.print("CLOSED");
+      for(i=110; i>=0; i-=1)
+      {
+       digitalWrite(led1, HIGH);
+       servo.write(i);
+       delay(30);
+       digitalWrite(led1, LOW);
+      }
+      lcd.clear();
+      lcd.setCursor(3,0);
+      lcd.print("Majalengka");
+      lcd.setCursor(3,1);
+      lcd.print("University");
+    }
+  }
+}
+void loop()
+{
+  sendSerial();
+}
