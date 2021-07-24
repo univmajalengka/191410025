@@ -1,0 +1,69 @@
+#include <LiquidCrystal.h>
+#include <Servo.h>
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+int trig = 10;
+int echo = 9;
+int led = 7;
+int buzzer = 6;
+long cm,duration;
+String result;
+int i;
+
+void setup()
+{
+  Serial.begin(9600);
+  lcd.begin(16, 2);
+  lcd.clear();
+  lcd.setCursor(3,0);
+  lcd.print("Majalengka");
+  lcd.setCursor(3,1);
+  lcd.print("University");
+  pinMode(trig, OUTPUT);
+  pinMode(echo, INPUT);
+  pinMode(buzzer, OUTPUT);
+  pinMode(led, OUTPUT);
+}
+
+void ultrasonic()
+{
+  digitalWrite(trig, LOW);
+  delay(100);
+  digitalWrite(trig,HIGH);
+  delay(100);
+  digitalWrite(trig,LOW);
+  duration=pulseIn(echo, HIGH);
+  cm = duration*0.034/2;
+  result = String("Jarak = ")+cm+" cm";
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("Ultrasonic");
+  lcd.setCursor(0,1);
+  lcd.print(result);
+  delay(100);
+  if(cm <=30)
+  {
+    for(i=0; i<=1000; i+=2)
+    {
+      tone(buzzer,i);
+      digitalWrite(led, HIGH);
+      delay(2);
+    }
+     for(i=1000; i>=0; i-=2)
+    {
+      tone(buzzer,i);
+      digitalWrite(led, LOW);
+      delay(2);
+    }
+  }
+  else if(cm >31)
+  {
+    tone(buzzer, 1);
+    digitalWrite(led, LOW);
+    i=0;
+  }
+}
+
+void loop()
+{
+  ultrasonic();
+}
