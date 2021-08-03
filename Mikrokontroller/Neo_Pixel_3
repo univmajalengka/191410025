@@ -1,0 +1,70 @@
+//Using Resistor 10Kohm
+#include<Adafruit_NeoPixel.h>
+#define PIN 6
+#define PIN1 5
+#define PIN2 9
+#define NUMPIXELS 12
+int interval ;
+int result;
+int i,a,b;
+Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel pixels1 = Adafruit_NeoPixel(NUMPIXELS, PIN1, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel pixels2 = Adafruit_NeoPixel(NUMPIXELS, PIN2, NEO_GRB + NEO_KHZ800);
+
+void setup()
+{
+  Serial.begin(9600);
+  pixels.begin();
+  pixels1.begin();
+  pixels2.begin();
+  interval = 50;
+}
+
+void loop()
+{
+   for( i=0;i<=12;i++)
+   {
+     result+=60;
+     pixels.setPixelColor(i, pixels.Color(150, 100, result));
+     pixels.show();     
+     delay(interval);
+   }
+   i = 0;
+   for(b=0; b<=12; b++)
+   {
+     result+=60;
+     pixels2.setPixelColor(b, pixels1.Color(100, 50, result));
+     pixels2.show();
+     delay(interval);
+   }
+   b = 0;
+   for(a=0; a<=12; a++)
+   {
+     result+=60;
+     pixels1.setPixelColor(a, pixels1.Color(100, 50, result));
+     pixels1.show();
+     delay(interval);
+   }
+   a = 0;
+   for( i=0; i<=12; i++)
+   { 
+     pixels.setPixelColor(i, pixels.Color(0, 0, 0));
+     pixels.show();     
+     delay(interval);
+   }
+   i = 0;
+   for(b=0; b<=12; b++)
+   {
+     pixels2.setPixelColor(b, pixels1.Color(0, 0, 0));
+     pixels2.show();
+     delay(interval);
+   }
+   b = 0;
+   for(a=0; a<=12; a++)
+   {
+     pixels1.setPixelColor(a, pixels1.Color(0, 0, 0));
+     pixels1.show();
+     delay(interval);
+   }
+   a = 0;
+}
