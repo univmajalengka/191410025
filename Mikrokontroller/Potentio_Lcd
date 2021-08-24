@@ -1,0 +1,37 @@
+#include<LiquidCrystal.h>
+LiquidCrystal lcd (12,11,5,4,3,2);
+int pinPot = A0;
+int led = 9;
+int potentio;
+int resLed;
+String result;
+
+void setup()
+{
+  lcd.begin(16,2);
+  pinMode(pinPot, INPUT);
+  pinMode(led, OUTPUT);
+  lcd.setCursor(0,0);
+  lcd.print("Microcontroller");
+  lcd.setCursor(0,1);
+  lcd.print("Algorithm Design");
+  delay(1000);
+}
+
+void potentioRes()
+{
+  potentio = analogRead(pinPot);
+  result = String(potentio)+" mVolt";
+  resLed = potentio /3;
+  analogWrite(led, resLed);
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("Potentio = ");
+  lcd.setCursor(0,1);
+  lcd.print(result);
+}
+void loop()
+{
+  potentioRes();
+  delay(200);
+}
