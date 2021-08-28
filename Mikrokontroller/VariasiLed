@@ -1,0 +1,73 @@
+//Semua Led Menggunakan Pin PWM
+
+int ledBiru = 3;
+int ledKuning = 5;
+char data;//untuk Komunikasi Serial
+int i;//Untuk Fade Led
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(ledBiru, OUTPUT);
+  pinMode(ledKuning, OUTPUT);
+}
+
+//variasi1
+void variasi1()
+{
+  digitalWrite(ledBiru, HIGH);
+  digitalWrite(ledKuning, HIGH);
+}
+
+//Variasi2 Led Fade
+void variasi2()
+{
+  for(i=0; i<=300; i+=10)
+  {
+    analogWrite(ledBiru, i);
+    analogWrite(ledKuning, i);
+    delay(100);
+  }
+  for(i=300; i>=0; i-=10)
+  {
+    analogWrite(ledBiru, i);
+    analogWrite(ledKuning, i);
+    delay(100);
+  }
+}
+
+//variasi3 Led Kedip
+void variasi3()
+{
+  digitalWrite(ledBiru, HIGH);
+  digitalWrite(ledKuning, LOW);
+  delay(500);
+  digitalWrite(ledBiru, LOW);
+  digitalWrite(ledKuning, HIGH);
+  delay(500);
+}
+
+//variasi4 Menggunakan Komunikasi Serial
+void variasi4()
+{
+  while(Serial.available()>0)
+  {
+    data = Serial.read();
+    if(data == 'A')
+    {
+      digitalWrite(ledBiru, HIGH);
+      digitalWrite(ledKuning, HIGH);
+    }
+    else if(data == 'B')
+    {
+      digitalWrite(ledBiru, LOW);
+      digitalWrite(ledKuning, LOW);
+    }
+  }
+}
+void loop()
+{
+  //variasi1();
+  variasi2();
+  //variasi3();
+  //variasi4();
+}
