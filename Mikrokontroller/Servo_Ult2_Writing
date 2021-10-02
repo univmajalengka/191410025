@@ -1,0 +1,75 @@
+#include<Servo.h>
+Servo servoLeft, servoRight;
+
+const int trig1 = 5;
+const int echo1 = 6;
+const int trig2 = 9;
+const int echo2 = 10;
+
+long duration1, cm1;
+long duration2, cm2;
+
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(trig1, OUTPUT);
+  pinMode(echo1, INPUT);
+  pinMode(trig2, OUTPUT);
+  pinMode(echo2, INPUT);
+  servoLeft.attach(11);
+  servoRight.attach(3);
+  servoLeft.write(0);
+  servoRight.write(0);
+}
+
+void ultrasonic1()
+{
+  digitalWrite(trig1, LOW);
+  delay(200);
+  digitalWrite(trig1,HIGH);
+  delay(200);
+  digitalWrite(trig1,LOW);
+  duration1=pulseIn(echo1, HIGH);
+  cm1 = duration1*0.034/2;
+  Serial.print("Ultrasonic Right = ");
+  Serial.println(cm1);
+  if(cm1<=90)
+  {
+    servoRight.write(110);
+    Serial.println("Servo Right Rotation 110");
+  }
+  else if(cm1 > 91)
+  {
+    servoRight.write(0);
+  }
+  delay(200);
+}
+
+void ultrasonic2()
+{
+  digitalWrite(trig2, LOW);
+  delay(200);
+  digitalWrite(trig2,HIGH);
+  delay(200);
+  digitalWrite(trig2,LOW);
+  duration2=pulseIn(echo2, HIGH);
+  cm2 = duration2*0.034/2;
+  Serial.print("Ultrasonic Left = ");
+  Serial.println(cm2);
+  if(cm2 <=90)
+  {
+    servoLeft.write(110);
+    Serial.println("Servo Left Rotation 110");
+  }
+  else if(cm2 > 91)
+  {
+    servoLeft.write(0);
+  }
+  delay(200);
+}
+void loop()
+{
+  ultrasonic1();
+  ultrasonic2();
+  Serial.println("");
+}
