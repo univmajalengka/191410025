@@ -1,0 +1,65 @@
+#define BLYNK_PRINT Serial
+#include <ESP8266WiFi.h>
+#include <BlynkSimpleEsp8266.h>
+
+float lat1;
+float lon1;
+String resLat, resLon;
+int index1;
+
+char auth[] = "auth";
+char ssid[] = "ssid";
+char pass[] = "pass";
+char ip [] = "ip_local";
+
+WidgetMap myMap (V0);
+
+void setup()
+{
+  Serial.begin(9600);
+  Blynk.begin(auth, ssid, pass,ip,8080);
+  index1 =0;
+  lat1 = -6.831637;
+  lon1 = 108.215709;
+  resLat = String(lat1, 6);
+  resLon = String(lon1, 6);
+  myMap.location(index1, resLat, resLon,"Lokasi");
+}
+
+BLYNK_WRITE(V1)
+{
+  switch(param.asInt())
+  {
+    case 1:
+    {
+      lat1 = -6.831637;
+      lon1 = 108.215709;
+      resLat = String(lat1, 6);
+      resLon = String(lon1, 6);
+      myMap.location(index1, resLat, resLon,"Lokasi");
+      break;
+    }
+    case 2:
+    {
+      lat1 = -6.832888;
+      lon1 = 108.215015;
+      resLat = String(lat1, 6);
+      resLon = String(lon1, 6);
+      myMap.location(index1, resLat, resLon,"Lokasi");
+      break;
+    }
+    case 3:
+    {
+      lat1 = -6.832822;
+      lon1 = 108.215842;
+      resLat = String(lat1, 6);
+      resLon = String(lon1, 6);
+      myMap.location(index1, resLat, resLon,"Lokasi");
+      break;
+    }
+  }
+}
+void loop()
+{
+  Blynk.run();
+}
