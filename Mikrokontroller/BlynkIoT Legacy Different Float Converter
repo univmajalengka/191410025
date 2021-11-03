@@ -5,7 +5,7 @@
 char auth[] = "auth";
 char ssid[] = "ssid";
 char pass[] = "pass";
-//char ip[] = "192.168.137.1"; If Local
+//char ip[] = "Your IP Local"; If Local
 
 float dataInput;
 float pembagi;
