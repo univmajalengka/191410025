@@ -1,0 +1,73 @@
+#define BLYNK_PRINT Serial
+#include <ESP8266WiFi.h>
+#include <BlynkSimpleEsp8266.h>
+
+char auth[] = "auth";
+char ssid[] = "ssid";
+char pass[] = "pass";
+//char ip[] = "192.168.137.1"; If Local
+
+float dataInput;
+float pembagi;
+float result;
+
+String hasil1, hasil2, hasil3;
+String resHasil, resHasil1, resHasil2;
+
+WidgetTerminal terminal (V6);
+
+void setup()
+{
+  Serial.begin(9600);
+  Blynk.begin(auth, ssid, pass;
+  //Blynk.begin(auth, ssid, pass,ip,8080); If LocalServer
+  terminal.clear();
+  terminal.println("==== Different Decimal ====");
+  terminal.println("===========================");
+  terminal.println("");
+  terminal.flush();
+}
+
+BLYNK_WRITE(V0)
+{
+  dataInput = param.asFloat();
+}
+
+BLYNK_WRITE(V1)
+{
+  pembagi = param.asFloat();
+}
+BLYNK_WRITE(V2)
+{
+  if(param.asInt()==1)
+  {
+    result = dataInput / pembagi;
+    hasil1 = String(result, 3);
+    hasil2 = String(result, 6);
+    resHasil = String("Format Main Float = ")+result;
+    resHasil1 = String("Format Decimal  3 = ")+hasil1;
+    resHasil2 = String("Format Decimal  6 = ")+hasil2;
+    Blynk.virtualWrite(V3, resHasil);
+    Blynk.virtualWrite(V4, resHasil1);
+    Blynk.virtualWrite(V5, resHasil2);
+    terminal.clear();
+    terminal.println("==== Different Decimal ====");
+    terminal.println("===========================");
+    terminal.println("");
+    terminal.println(resHasil);
+    terminal.println(resHasil1);
+    terminal.println(resHasil2);
+    terminal.println("");
+    terminal.flush();
+  }
+  else if(param.asInt()==0)
+  {
+    
+  }
+}
+
+
+void loop()
+{
+  Blynk.run();
+}
